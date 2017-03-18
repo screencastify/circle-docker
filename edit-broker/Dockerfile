@@ -35,6 +35,7 @@ RUN \
   apt-get install -y google-chrome-stable xvfb sudo make
 
 COPY chrome_launcher.sh /opt/google/chrome/google-chrome
+RUN npm install -g firebase
 
 
 # RUN useradd -ms /bin/bash ubuntu

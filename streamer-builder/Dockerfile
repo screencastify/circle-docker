@@ -16,7 +16,6 @@ python-yaml wdiff zip
 # ENV HOME /home/ubuntu
 ENV HOME /root
 
-RUN OLDDIR=`pwd`
 WORKDIR $HOME
 ENV PATH "${HOME}/depot_tools:${PATH}"
 RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \ 
@@ -27,6 +26,5 @@ RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true \
 --bash-completion=true --additional-components app alpha beta 
 RUN google-cloud-sdk/bin/gcloud config set --installation component_manager/disable_update_check true
 ENV PATH "${HOME}/google-cloud-sdk/bin:${PATH}"
-WORKDIR $OLDDIR
 
 CMD gclient sync && ./build.sh

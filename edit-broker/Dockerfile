@@ -27,6 +27,7 @@ RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true \
 RUN google-cloud-sdk/bin/gcloud config set --installation \
   component_manager/disable_update_check true
 ENV PATH "${HOME}/google-cloud-sdk/bin:${PATH}"
+RUN gcloud components install kubectl
 
 RUN \
   curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \

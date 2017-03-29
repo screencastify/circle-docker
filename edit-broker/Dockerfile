@@ -39,11 +39,10 @@ COPY chrome_launcher.sh /opt/google/chrome/google-chrome
 RUN npm install -g firebase-tools firebase-bolt
 
 
-# RUN useradd -ms /bin/bash ubuntu
-# RUN echo "ubuntu ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
-# ENV DISPLAY :99
-# USER ubuntu
-# ENV HOME /home/ubuntu
-# WORKDIR $HOME
+# blender
+RUN mkdir -p /opt/blender && \
+      curl -SL \
+      http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78a-linux-glibc211-x86_64.tar.bz2 \
+ | tar -xjC /opt/blender --strip-components=1
 
 

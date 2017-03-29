@@ -45,4 +45,10 @@ RUN mkdir -p /opt/blender && \
       http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78a-linux-glibc211-x86_64.tar.bz2 \
  | tar -xjC /opt/blender --strip-components=1
 
+RUN useradd -ms /bin/bash ubuntu
+RUN echo "ubuntu ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
+ENV DISPLAY :99
+USER ubuntu
+ENV HOME /home/ubuntu
+WORKDIR $HOME
 

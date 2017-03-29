@@ -19,15 +19,6 @@ RUN bash -c "curl -sL https://deb.nodesource.com/setup_7.x | bash -"
 RUN apt-get install -y nodejs 
 
 
-# gcloud
-RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip -o google-cloud-sdk.zip && \
-      unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
-RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true \
-  --bash-completion=true --additional-components app alpha beta 
-RUN google-cloud-sdk/bin/gcloud config set --installation \
-  component_manager/disable_update_check true
-ENV PATH "${HOME}/google-cloud-sdk/bin:${PATH}"
-RUN gcloud components install kubectl
 
 RUN \
   curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
@@ -52,3 +43,12 @@ USER ubuntu
 ENV HOME /home/ubuntu
 WORKDIR $HOME
 
+# gcloud
+RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip -o google-cloud-sdk.zip && \
+      unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
+RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true \
+  --bash-completion=true --additional-components app alpha beta 
+RUN google-cloud-sdk/bin/gcloud config set --installation \
+  component_manager/disable_update_check true
+ENV PATH "${HOME}/google-cloud-sdk/bin:${PATH}"
+RUN gcloud components install kubectl

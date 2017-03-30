@@ -12,7 +12,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
 
 RUN apt-get update
 RUN apt-get install -y libgif-dev ffmpeg git unzip python python-crypto \
-      python-psutil python-yaml docker-ce bzip2
+      python-psutil python-yaml docker-ce bzip2 unbuffer
 
 # nodejs
 RUN bash -c "curl -sL https://deb.nodesource.com/setup_7.x | bash -"

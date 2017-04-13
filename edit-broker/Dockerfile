@@ -28,7 +28,7 @@ RUN \
   apt-get install -y google-chrome-stable xvfb sudo make
 
 COPY chrome_launcher.sh /opt/google/chrome/google-chrome
-RUN npm install -g firebase-tools firebase-bolt linklocal
+RUN npm install -g firebase-tools firebase-bolt linklocal @microsoft/rush
 
 
 # blender

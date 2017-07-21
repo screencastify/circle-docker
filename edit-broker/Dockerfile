@@ -16,7 +16,7 @@ RUN apt-get install -y libgif-dev ffmpeg git unzip python python-crypto \
       libglu1-mesa
 
 # nodejs
-RUN bash -c "curl -sL https://deb.nodesource.com/setup_7.x | bash -"
+RUN bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -"
 RUN apt-get install -y nodejs 
 
 

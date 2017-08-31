@@ -10,15 +10,19 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
  $(lsb_release -cs) \
  stable"
 
+# yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+       echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
+       tee /etc/apt/sources.list.d/yarn.list
+
 RUN apt-get update
 RUN apt-get install -y libgif-dev ffmpeg git unzip python python-crypto \
       python-psutil python-yaml docker-ce bzip2 expect libgl1-mesa-glx \
-      libglu1-mesa
+      libglu1-mesa yarn
 
 # nodejs
 RUN bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -"
 RUN apt-get install -y nodejs 
-
 
 
 RUN \

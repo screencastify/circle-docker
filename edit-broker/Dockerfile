@@ -18,7 +18,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 RUN apt-get update
 RUN apt-get install -y libgif-dev ffmpeg git unzip python python-crypto \
       python-psutil python-yaml docker-ce bzip2 expect libgl1-mesa-glx \
-      libglu1-mesa yarn
+      libglu1-mesa yarn build-essential
 
 # nodejs
 RUN bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -"

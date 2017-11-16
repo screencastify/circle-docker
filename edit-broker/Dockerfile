@@ -42,6 +42,8 @@ RUN mkdir -p /opt/blender && \
  | tar -xjC /opt/blender --strip-components=1
 
 RUN sudo npm install --unsafe-perm -g firebase-tools firebase-bolt linklocal @microsoft/rush lerna
+# hack for https://circleci.com/docs/2.0/high-uid-error/
+RUN chown root -R /usr/lib/node_modules/firebase-tools/node_modules/grpc/src/node/extension_binary/
 
 RUN useradd -ms /bin/bash ubuntu
 RUN echo "ubuntu ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user
@@ -59,3 +61,4 @@ RUN google-cloud-sdk/bin/gcloud config set --installation \
   component_manager/disable_update_check true
 ENV PATH "${HOME}/google-cloud-sdk/bin:${PATH}"
 RUN gcloud components install kubectl
+

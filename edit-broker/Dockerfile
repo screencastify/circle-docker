@@ -41,9 +41,10 @@ RUN mkdir -p /opt/blender && \
       http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78a-linux-glibc211-x86_64.tar.bz2 \
  | tar -xjC /opt/blender --strip-components=1
 
-RUN sudo npm install --unsafe-perm -g firebase-tools firebase-bolt linklocal @microsoft/rush lerna
-# hack for https://circleci.com/docs/2.0/high-uid-error/
-RUN chown root:root -R /usr/lib/node_modules/firebase-tools/node_modules/grpc/src/node/extension_binary/
+# chown hack for https://circleci.com/docs/2.0/high-uid-error/
+RUN sudo npm install --unsafe-perm -g firebase-tools firebase-bolt linklocal \
+      lerna && \
+      sudo chown root:root -R /usr/lib/node_modules/
 
 RUN useradd -ms /bin/bash ubuntu
 RUN echo "ubuntu ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user

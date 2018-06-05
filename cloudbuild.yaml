@@ -8,7 +8,9 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-chrome:$COMMIT_SHA', './node-gcloud-chrome' ]
 images:
-- 'gcr.io/$PROJECT_ID/mystaticsite:$COMMIT_SHA'
-- 'gcr.io/$PROJECT_ID/mystaticsite:latest'
+- 'gcr.io/$PROJECT_ID/node-gcloud:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/node-gcloud:latest'
+- 'gcr.io/$PROJECT_ID/node-gcloud-kube:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/node-chrome:$COMMIT_SHA'
 tags:
 - "ci"

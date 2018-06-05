@@ -3,7 +3,16 @@ FROM library/node:8.9-stretch
 ENV HOME /root
 WORKDIR $HOME
 
-RUN apt-get update && apt-get install -y unzip build-essential
+RUN apt-get update && apt-get install -y unzip build-essential software-properties-common
+
+#docker
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
+ add-apt-repository \
+ "deb [arch=amd64] https://download.docker.com/linux/debian \
+ $(lsb_release -cs) \
+ stable"
+
+
 # firebase
 # chown hack for https://circleci.com/docs/2.0/high-uid-error/
 RUN yarn global add --unsafe-perm -g firebase-tools firebase-bolt \

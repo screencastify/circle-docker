@@ -12,6 +12,7 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
  "deb [arch=amd64] https://download.docker.com/linux/debian \
  $(lsb_release -cs) \
  stable"
+RUN apt-get apt-get update && install -y docker-ce
 
 
 # firebase

@@ -1,10 +1,11 @@
 FROM library/node:8.9-stretch
 
+WORKDIR /root
 
-RUN apt-get update && apt-get install -y unzip
+RUN apt-get update && apt-get install -y unzip build-essential
 # firebase
 # chown hack for https://circleci.com/docs/2.0/high-uid-error/
-RUN npm install --unsafe-perm -g firebase-tools firebase-bolt linklocal \
+RUN npm install --unsafe-perm -g firebase-tools firebase-bolt \
       lerna && \
       chown root:root -R /usr/local/lib/node_modules/
 
@@ -16,5 +17,4 @@ RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true \
 RUN google-cloud-sdk/bin/gcloud config set --installation \
   component_manager/disable_update_check true
 ENV PATH "${HOME}/google-cloud-sdk/bin:${PATH}"
-RUN gcloud components install kubectl
 

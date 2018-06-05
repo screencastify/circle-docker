@@ -14,3 +14,4 @@ images:
 - 'gcr.io/$PROJECT_ID/node-chrome:$COMMIT_SHA'
 tags:
 - "ci"
+timeout: 1200s

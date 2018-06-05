@@ -1,11 +1,12 @@
 FROM library/node:8.9-stretch
 
-WORKDIR /root
+ENV HOME /root
+WORKDIR $HOME
 
 RUN apt-get update && apt-get install -y unzip build-essential
 # firebase
 # chown hack for https://circleci.com/docs/2.0/high-uid-error/
-RUN npm install --unsafe-perm -g firebase-tools firebase-bolt \
+RUN yarn global add --unsafe-perm -g firebase-tools firebase-bolt \
       lerna && \
       chown root:root -R /usr/local/lib/node_modules/
 

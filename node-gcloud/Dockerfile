@@ -3,7 +3,8 @@ FROM library/node:8.9-stretch
 ENV HOME /root
 WORKDIR $HOME
 
-RUN apt-get update && apt-get install -y unzip build-essential software-properties-common
+RUN apt-get update && apt-get install -y unzip build-essential \
+      software-properties-common apt-transport-https
 
 #docker
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \

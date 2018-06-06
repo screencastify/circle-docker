@@ -5,3 +5,5 @@ RUN \
   echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
   apt-get update && \
   apt-get install -y google-chrome-stable
+
+COPY chrome_launcher.sh /opt/google/chrome/google-chrome

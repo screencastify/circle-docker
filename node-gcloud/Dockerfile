@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y docker-ce
 
 # firebase
 # chown hack for https://circleci.com/docs/2.0/high-uid-error/
-RUN yarn global add firebase-tools firebase-bolt \
+RUN yarn global add firebase-tools@3.16.0 firebase-bolt \
       lerna && \
       chown root:root -R /usr/local/lib/node_modules/
 

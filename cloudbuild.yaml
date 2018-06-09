@@ -7,9 +7,12 @@ steps:
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-gcloud-kube:$COMMIT_SHA', './node-gcloud-kube' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-gcloud-chrome:$COMMIT_SHA', './node-gcloud-chrome' ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg:$COMMIT_SHA', './node-gcloud-ffmpeg' ]
 images:
 - 'gcr.io/$PROJECT_ID/node-gcloud:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud:latest'
+- 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud-kube:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud-chrome:$COMMIT_SHA'
 tags:

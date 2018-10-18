@@ -1,4 +1,4 @@
-FROM library/node:8.9-stretch
+FROM library/node:8-stretch
 
 ENV HOME /root
 WORKDIR $HOME

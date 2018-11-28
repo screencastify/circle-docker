@@ -16,7 +16,13 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome:$COMMIT_SHA', './node-gcloud-ffmpeg-chrome' ]
 - name: 'gcr.io/cloud-builders/docker'
+  args: [ 'tag', 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome:$COMMIT_SHA', 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome-java:$COMMIT_SHA', './node-gcloud-ffmpeg-chrome-java' ]
+- name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA', './gae-python' ]
+  waitFor: ['-']
+
 images:
 - 'gcr.io/$PROJECT_ID/node-gcloud:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud:latest'
@@ -25,6 +31,7 @@ images:
 - 'gcr.io/$PROJECT_ID/node-gcloud-kube-chrome:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud-chrome:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome-java:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA'
 tags:
 - "ci"

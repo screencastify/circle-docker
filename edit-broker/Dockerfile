@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:0.11
 
 ENV HOME /root
 WORKDIR $HOME
@@ -15,15 +15,16 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
        echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
        tee /etc/apt/sources.list.d/yarn.list
 
-RUN add-apt-repository ppa:jonathonf/ffmpeg-3
-RUN apt-get update
-RUN apt-get install -y libgif-dev ffmpeg git unzip python python-crypto \
+
+RUN apt-get update && \
+    apt-get install -y libgif-dev ffmpeg git unzip python python-crypto \
       python-psutil python-yaml docker-ce bzip2 expect libgl1-mesa-glx \
       libglu1-mesa yarn build-essential
 
+
 # nodejs
 RUN bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -"
-RUN apt-get install -y nodejs 
+RUN apt-get install -y nodejs
 
 
 RUN \
@@ -57,7 +58,7 @@ WORKDIR $HOME
 RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip -o google-cloud-sdk.zip && \
       unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip
 RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true \
-  --bash-completion=true --additional-components app alpha beta 
+  --bash-completion=true --additional-components app alpha beta
 RUN google-cloud-sdk/bin/gcloud config set --installation \
   component_manager/disable_update_check true
 ENV PATH "${HOME}/google-cloud-sdk/bin:${PATH}"

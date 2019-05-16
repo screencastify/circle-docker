@@ -15,9 +15,15 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
        echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
        tee /etc/apt/sources.list.d/yarn.list
 
+# ffmpeg
+RUN add-apt-repository ppa:jonathonf/ffmpeg-4 && \
+    apt-get update && \
+    apt-get install -y ffmpeg && \
+    apt-get clean
+
 
 RUN apt-get update && \
-    apt-get install -y libgif-dev ffmpeg git unzip python python-crypto \
+    apt-get install -y libgif-dev git unzip python python-crypto \
       python-psutil python-yaml docker-ce bzip2 expect libgl1-mesa-glx \
       libglu1-mesa yarn build-essential
 

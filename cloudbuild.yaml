@@ -38,4 +38,6 @@ images:
 - 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA'
 tags:
 - "ci"
-timeout: 1800s
+timeout: 2800s
+machineType: 'N1_HIGHCPU_8'
+

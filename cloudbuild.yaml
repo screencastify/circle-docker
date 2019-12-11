@@ -26,7 +26,7 @@ steps:
   waitFor: ['-']
 
 images:
-- 'gcr.io/$PROJECT_ID/edit-broker-ci:$COMMIT_SHA'
+# - 'gcr.io/$PROJECT_ID/edit-broker-ci:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud:latest'
 - 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg:$COMMIT_SHA'

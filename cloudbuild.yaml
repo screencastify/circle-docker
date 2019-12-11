@@ -1,6 +1,6 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/edit-broker-ci:$COMMIT_SHA', './edit-broker-ci' ]
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/edit-broker-ci:$COMMIT_SHA', './edit-broker-ci' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-gcloud:$COMMIT_SHA', './node-gcloud' ]
 - name: 'gcr.io/cloud-builders/docker'

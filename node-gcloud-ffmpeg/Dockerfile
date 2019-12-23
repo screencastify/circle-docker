@@ -1,5 +1,11 @@
 FROM gcr.io/screencastify-public-registry/node-gcloud:latest
 
+# install gifski
+RUN curl -fsSL "https://gif.ski/gifski-0.9.1.zip" -o /tmp/gifski.zip && \
+  unzip /tmp/gifski.zip -d /tmp/gifski && \
+  dpkg -i /tmp/gifski/linux/gifski_0.9.1_amd64.deb && \
+  rm -rf /tmp/gifski*
+
 # install ffmpeg from sid
 RUN echo -e "\
   Package: * \n\

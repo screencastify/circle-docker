@@ -25,7 +25,7 @@ steps:
   args: [ 'build', '--no-cache', '-t', 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA', './gae-python' ]
   waitFor: ['-']
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-ffmpeg-gifski:$COMMIT_SHA', './node-ffmpeg-gifski' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/debian9-ffmpeg-gifski:$COMMIT_SHA', './debian9-ffmpeg-gifski' ]
   waitFor: ['-']
 
 images:

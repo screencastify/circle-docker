@@ -24,6 +24,9 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '--no-cache', '-t', 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA', './gae-python' ]
   waitFor: ['-']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/node-ffmpeg-gifski:$COMMIT_SHA', './node-ffmpeg-gifski' ]
+  waitFor: ['-']
 
 images:
 - 'gcr.io/$PROJECT_ID/edit-broker-ci:$COMMIT_SHA'
@@ -36,6 +39,7 @@ images:
 - 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome-java:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/node-ffmpeg-gifski:$COMMIT_SHA'
 tags:
 - "ci"
 timeout: 2800s

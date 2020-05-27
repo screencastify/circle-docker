@@ -39,7 +39,7 @@ images:
 - 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/node-gcloud-ffmpeg-chrome-java:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA'
-- 'gcr.io/$PROJECT_ID/node-ffmpeg-gifski:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/debian9-ffmpeg-gifski:$COMMIT_SHA'
 tags:
 - "ci"
 timeout: 2800s

@@ -30,6 +30,9 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/debian9-ffmpeg-imagemagick:$COMMIT_SHA', './debian9-ffmpeg-imagemagick' ]
   waitFor: ['-']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/debian9-kubctrl:$COMMIT_SHA', './debian9-kubctrl' ]
+  waitFor: ['-']
   
 
 images:
@@ -45,6 +48,7 @@ images:
 - 'gcr.io/$PROJECT_ID/gae-python:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/debian9-ffmpeg-gifski:$COMMIT_SHA'
 - 'gcr.io/$PROJECT_ID/debian9-ffmpeg-imagemagick:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/debian9-kubctrl:$COMMIT_SHA'
 tags:
 - "ci"
 timeout: 2800s

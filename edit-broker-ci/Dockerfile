@@ -5,10 +5,10 @@ WORKDIR $HOME
 
 # docker
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
- add-apt-repository \
- "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
- $(lsb_release -cs) \
- stable"
+    add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
 
 # yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -23,9 +23,10 @@ RUN add-apt-repository ppa:jonathonf/ffmpeg-4 && \
 
 
 RUN apt-get update && \
-    apt-get install -y libgif-dev git unzip python python-crypto \
-      python-psutil python-yaml docker-ce bzip2 expect libgl1-mesa-glx \
-      libglu1-mesa yarn build-essential
+    apt-get install -y \
+        libgif-dev git unzip python python-crypto \
+        python-psutil python-yaml docker-ce bzip2 expect libgl1-mesa-glx \
+        libglu1-mesa yarn build-essential
 
 
 # nodejs
@@ -33,20 +34,14 @@ RUN bash -c "curl -sL https://deb.nodesource.com/setup_10.x | bash -"
 RUN apt-get install -y nodejs
 
 
-RUN \
-  curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
-  apt-get update && \
-  apt-get install -y google-chrome-stable xvfb sudo make
-
-COPY chrome_launcher.sh /opt/google/chrome/google-chrome
-
-
-# blender
-RUN mkdir -p /opt/blender && \
-      curl -SL \
-      http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78a-linux-glibc211-x86_64.tar.bz2 \
- | tar -xjC /opt/blender --strip-components=1
+RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
+    apt-get update && \
+    apt-get install -y \
+        google-chrome-stable \
+        xvfb \
+        sudo \
+        make
 
 # chown hack for https://circleci.com/docs/2.0/high-uid-error/
 RUN sudo npm install --unsafe-perm -g firebase-tools firebase-bolt linklocal \

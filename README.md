@@ -1,3 +1,8 @@
+# DEPRECATED REPO
+
+moved to https://github.com/w69b/castify/tree/master/ci-images
+
+
 # circle-docker
 Circle CI docker images
 

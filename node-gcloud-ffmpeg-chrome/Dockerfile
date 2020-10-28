@@ -18,5 +18,5 @@ RUN echo -e "\
   "
 RUN echo "deb http://deb.debian.org/debian unstable main" >> /etc/apt/sources.list && \
     apt-get -y update && \
-    apt-get -y -t=unstable -o APT::Immediate-Configure=0 install ffmpeg && \
+    apt-get -y -t unstable install ffmpeg && \
     apt-get -y clean

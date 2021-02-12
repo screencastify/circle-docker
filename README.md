@@ -1,6 +1,6 @@
 # DEPRECATED REPO
 
-moved to https://github.com/w69b/castify/tree/master/ci-images
+moved to https://github.com/screencastify/castify/tree/master/ci-images
 
 
 # circle-docker

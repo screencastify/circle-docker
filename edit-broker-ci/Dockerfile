@@ -60,6 +60,7 @@ USER ubuntu
 ENV HOME /home/ubuntu
 WORKDIR $HOME
 
+
 # gcloud
 RUN curl https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip -o google-cloud-sdk.zip && \
       unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip

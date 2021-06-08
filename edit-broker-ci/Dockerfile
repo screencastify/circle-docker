@@ -21,7 +21,6 @@ RUN add-apt-repository ppa:jonathonf/ffmpeg-4 && \
     apt-get install -y ffmpeg && \
     apt-get clean
 
-
 RUN apt-get update && \
     apt-get install -y \
         libgif-dev git unzip python python-crypto \
@@ -47,6 +46,12 @@ RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - &
 RUN sudo npm install --unsafe-perm -g firebase-tools firebase-bolt linklocal \
       lerna && \
       sudo chown root:root -R /usr/lib/node_modules/
+
+# install audiowaveform
+RUN add-apt-repository ppa:chris-needham/ppa && \
+    apt-get update && \
+    apt-get install -y audiowaveform && \
+    apt-get clean
 
 RUN useradd -ms /bin/bash ubuntu
 RUN echo "ubuntu ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/user

@@ -1,4 +1,4 @@
-FROM library/node:10-stretch
+FROM library/node:14-buster
 
 ENV HOME /root
 WORKDIR $HOME
